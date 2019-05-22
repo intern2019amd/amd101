@@ -1,0 +1,46 @@
+Multiple Vagrant VMs in One Vagrantfile
+
+
+-Change directory to the ~/vagrant/centos7
+
+$ cd ~/vagrant/centos7
+
+-Open the file Vagrantfile with any text editor.
+
+-The Configuration for one server :
+
+ config.vm.define "server01" do |server01|
+    server01.vm.hostname= "server01"
+    server01.vm.network "private_network", ip:"10.10.10.11"
+    server01.vm.box = "centos/7"
+    end
+
+-Also for the other server :
+
+config.vm.define "server02" do |server02|
+
+    server02.vm.hostname= "server02"
+    server02.vm.network "private_network", ip:"10.10.10.12"
+    server02.vm.box = "centos/7"
+    end
+
+-Now save the configuration and reload vagrant with:
+
+$vagrant reload
+
+-And login with :
+
+$vagrant ssh server01
+
+-You can check if the servers are running with :
+
+$ vagrant status	
+
+-If you want to shut down one vm on vagrant :
+
+$ vagrant halt server01
+
+
+For more information check the link below:
+http://www.thisprogrammingthing.com/2015/multiple-vagrant-vms-in-one-vagrantfile/
+
