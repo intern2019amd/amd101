@@ -1,0 +1,35 @@
+Adding,installing and run CentOs7 Vagrant Box.
+
+-First step, download the CentOS 7 vagrant box from the link :
+
+https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
+
+-Once the download is complete, create a vagrant folder on your home directory:
+
+$ mkdir -p ~/vagrant/centos7
+$ cd ~/vagrant/centos7
+
+-The downloaded file move to this directory you just created.
+
+-Download vagrant for your operation system.
+
+-Add the centos7 box by typing the following command:
+$ vagrant box add centos-7.0-x86_64.box --name centos7
+
+- Now create Vagrantfile needed to start the vm by typing:
+$ vagrant init
+
+-Edit the Vagrantfile and replace the name of box inside the file with the name you specified in the –name option while creating the vm from the box file.
+
+$ vim  Vagrantfile
+//config.vm.box = "centos7"
+
+-Start the added box at the directory you created.
+$ vagrant up
+
+-Login to the CentOS 7 Virtual Machine with the command
+$ vagrant ssh
+
+
+
+

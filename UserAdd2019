@@ -1,0 +1,26 @@
+Adding user to server
+
+First check : The user must be in the same network connection with the server.
+
+	    •  Connect with the server through putty terminal 
+	    • Make yourself root via sudo su command
+	    • useradd  “user”  
+	    • passwd  “user”   , “password” with  be written 2 times.
+	    • Check if the user is created  with cat /etc/passwd
+	    •  cd  /etc/sudoers.d/
+	    • Check in what group you want the user to be.
+	    • Add the user in the group via  usermod –aG vagrant  “user”
+	    • Log into the user just created :  su [user]
+	    • Then change directory to the user , cd home/user
+	    •  List all the files , ll –a 
+	    • mkdir .ssh  &  chmod 700 .ssh
+	    • cd .ssh & touch autherized_keys
+	    • Also we chmod 600 autherized_keys  , only for the user 
+	    • Now generate the keys : ssh-keygen –t rsa
+	    • Copy and paste the public key to authorized_keys 
+	    • And convert the private key in putty format using puttygen.
+
+
+
+
+
