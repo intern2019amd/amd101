@@ -1,0 +1,34 @@
+Installing Mysql on your server.
+
+Prerequisites:
+-Make sure you are logged into your server with a user account with sudo privileges or with the root user.
+
+1)Enable the MySQL 8.0 repository with the following command:
+
+$ sudo yum localinstall https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+
+$sudo yum install mysql-community-server
+
+//During the installation yum may prompt you to import the MySQL GPG key. Type y and hit Enter.
+
+
+2)Starting Mysql :
+
+$ sudo systemctl enable mysqld
+$ sudo systemctl start mysqld
+
+-Check the status:
+
+$ sudo systemctl status mysqld
+
+3)When the MySQL server is started for the first time, a temporary password is generated for the MySQL root user. You can find the password by running the following command:
+
+$ sudo grep 'temporary password' /var/log/mysqld.log
+
+Then: 
+
+$ sudo mysql_secure_installation
+-After entering the temporary password you will be asked to set a new password for user root.
+
+4)To log in to the MySQL server as the root user type:
+ $ mysql -u root -p
