@@ -1,0 +1,26 @@
+Create a Database.
+
+
+-Once you are connected to the MySQL shell, you can create a new database by typing the following command:
+
+mysql>CREATE DATABASE new_database;
+
+
+-Now that we created a database we can create a table to store some data.
+
+Before running the SQL statements for creating a table we need to connect to the database:
+
+mysql>use new_database;
+
+-In this example we will create a simple table named contacts with three fields, id, name and email:
+
+CREATE TABLE contacts (
+  id INT PRIMARY KEY,
+  name VARCHAR(30),
+  email VARCHAR(30)
+);
+
+
+-To view the database you’ve created, from within the MySQL shell execute the following command:
+
+mysql>SHOW DATABASES;
