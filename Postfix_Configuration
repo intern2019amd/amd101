@@ -1,0 +1,66 @@
+Configure Postfix on CentOS 7
+
+
+Prerequisites:
+
+Postfix,cyrus-sasl-plain and mailx packages installed,
+
+also you have to be root to make the configurations:
+
+#yum install postfix cyrus-sasl-plain mailx 
+
+-Make a connection with google.com
+
+#ping google.com
+
+-Go to /etc/postif/main.cf 
+
+#vi /etc/postif/main.cf 
+
+-and insert the configurations
+
+myhostname=server02
+relayhost=[smtp.gmail.com]:587
+smtp_use_tls=yes
+smtp_sasl_auth_enable=yes
+smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+smtp_tls_CAfile=/etc/ssl/certs/ca-bundle.crt
+smtp_sasl_security_options=noanonymous
+smtp_sasl_tls_security_options=noanonymous
+
+save and exit.
+
+-Now we have to configure the Sasl credentials :
+
+#vi /etc/postfix/sasl_passwd 
+
+and insert this line:
+
+[smtp.gmail.com]:587 Your_email:Your_password
+
+save and exit
+
+-Then change owner, permissions and other configurations:
+
+#chown root:postfix /etc/postfix/sasl_passwd
+#chmod 640 /etc/postfix/sasl_passwd
+#postmap /etc/postfix/sasl_passwd
+
+#getenforce
+#setenforce 0
+
+-Start the service :
+#systemctl start postfix
+#systemctl enable postfix
+#systemctl status postfix
+
+
+Note:Make sure you have turn on the access from less secure apps in your gmail account.
+
+
+--Send mail :
+
+#echo "Hello user " | mail -s "Test" email_you_want_to_send
+
+ 
+
