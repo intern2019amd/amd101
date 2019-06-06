@@ -1,0 +1,19 @@
+Using Crontab to automate and schedule a script.
+
+Step 1: Optional- choose your editor. 
+
+export EDITOR=nano; crontab -e
+
+Step 2: Write your cron command using :
+
+https://crontab.guru/  and choose the time 
+
+0 9 * * *  sh home/vargrant/backup.sh
+
+save and exit.
+
+Step 3: Check for errors and if command is working 
+
+You’ll get an error in the file var/mail/$USERNAME. 
+
+
