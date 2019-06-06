@@ -8,7 +8,7 @@ Step 2: Write your cron command using :
 
 https://crontab.guru/  and choose the time 
 
-0 9 * * *  sh home/vargrant/backup.sh
+* * * * 1 /bin/sh /home/vagrant/backup.sh >/dev/null 2>&1 ; [ $? == 0 ] && /bin/php sendmail.php
 
 save and exit.
 
